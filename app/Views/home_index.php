@@ -1,0 +1,1 @@
+This is <b>home_index</b> view for <b>home/index</b> method
