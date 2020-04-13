@@ -1,4 +1,4 @@
-<?php namespace App\Models;
+<?php namespace System;
 
 use System\Db;
 use PDOException;
