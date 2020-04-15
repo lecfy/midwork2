@@ -16,9 +16,6 @@ $config['db_password'] = '';
 // default route = controller/method
 $config['route']['default'] = 'home/index';
 
-// toggle development mode (true|false)
-$config['dev'] = false;
-
 // path to app folder with trailing slash
 define('APP_PATH', __DIR__ . '/');
 
