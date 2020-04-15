@@ -1,6 +1,8 @@
 <?php
 /*
  * Common/helper functions
+ *
+ * To override, create a function with the same name in app/Common.php file
  */
 
 /*
@@ -26,37 +28,45 @@ if (!function_exists('value')) {
 /*
  * show notification message
  */
-function show_alert() {
-    if (!empty($_SESSION['alert'])) {
-        $temp = $_SESSION['alert'];
-        unset($_SESSION['alert']);
+if (!function_exists('show_alert')) {
+    function show_alert() {
+        if (!empty($_SESSION['alert'])) {
+            $temp = $_SESSION['alert'];
+            unset($_SESSION['alert']);
 
-        return view('alert', [
-            'message' => $temp['message'],
-            'type' => $temp['type']
-        ]);
+            return view('alert', [
+                'message' => $temp['message'],
+                'type' => $temp['type']
+            ]);
+        }
+
+        return false;
     }
-
-    return false;
 }
 
 /*
  * sets notication message
  */
-function set_alert($message, $type = 'primary') {
-    $_SESSION['alert']['message'] = $message;
-    $_SESSION['alert']['type'] = $type;
+if (!function_exists('set_alert')) {
+    function set_alert($message, $type = 'primary')
+    {
+        $_SESSION['alert']['message'] = $message;
+        $_SESSION['alert']['type'] = $type;
+    }
 }
 
 /*
  * shows not found error message
  */
-function not_found() {
-    return view('not_found', [
-        'header' => false,
-        'footer' => false,
-        'title' => 'Not Found'
-    ]);
+if (!function_exists('not_found')) {
+    function not_found()
+    {
+        return view('not_found', [
+            'header' => false,
+            'footer' => false,
+            'title' => 'Not Found'
+        ]);
+    }
 }
 
 /*
@@ -64,14 +74,17 @@ function not_found() {
  *
  * @return mixed
  */
-function href($link = false, $name = false) {
-    $return = config('host') . $link;
+if (!function_exists('href')) {
+    function href($link = false, $name = false)
+    {
+        $return = config('host') . $link;
 
-    if ($name) {
-        $return = '<a href="' . $return . '">' . $name . '</a>';
+        if ($name) {
+            $return = '<a href="' . $return . '">' . $name . '</a>';
+        }
+
+        return $return;
     }
-
-    return $return;
 }
 
 /*
@@ -92,19 +105,25 @@ if (!function_exists('view')) {
 /*
  * goes back to previous page with session['post']
  */
-function back_with_input() {
-    $_SESSION['post'] = $_POST;
+if (!function_exists('back_with_input')) {
+    function back_with_input()
+    {
+        $_SESSION['post'] = $_POST;
 
-    back();
+        back();
+    }
 }
 
 /*
  * goes back to previous page
  */
-function back() {
-    if (!empty($_SERVER['HTTP_REFERER'])) {
-        header('location: ' . $_SERVER['HTTP_REFERER']);
-        exit;
+if (!function_exists('back')) {
+    function back()
+    {
+        if (!empty($_SERVER['HTTP_REFERER'])) {
+            header('location: ' . $_SERVER['HTTP_REFERER']);
+            exit;
+        }
     }
 }
 
@@ -114,24 +133,29 @@ function back() {
  * @param url
  *
  */
-function redirect($url = false) {
-    header('location: ' . config('host') . $url);
-    exit;
+if (!function_exists('redirect')) {
+    function redirect($url = false)
+    {
+        header('location: ' . config('host') . $url);
+        exit;
+    }
 }
 
-function exception($e, ... $errors)
-{
-    echo '<p style="font-weight: bold; color: red;">' . $e->getMessage() . '</p>';
+if (!function_exists('exception')) {
+    function exception($e, ...$errors)
+    {
+        echo '<p style="font-weight: bold; color: red;">' . $e->getMessage() . '</p>';
 
-    foreach ($errors as $error) {
-        if ($error == 'post') {
-            echo '<p style="font-weight: bold; color: black;">$_POST: ';
-            print_r($_POST);
-            echo '</p>';
-        } else {
-            echo '<p style="font-weight: bold; color: rgb(230,33,67);">' . $error . '</p>';
+        foreach ($errors as $error) {
+            if ($error == 'post') {
+                echo '<p style="font-weight: bold; color: black;">$_POST: ';
+                print_r($_POST);
+                echo '</p>';
+            } else {
+                echo '<p style="font-weight: bold; color: rgb(230,33,67);">' . $error . '</p>';
+            }
         }
-    }
 
-    $_SESSION['no_redirect'] = true;
+        $_SESSION['no_redirect'] = true;
+    }
 }
