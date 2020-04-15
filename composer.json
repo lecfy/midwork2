@@ -1,6 +1,6 @@
 {
   "name": "midmyk/midwork2",
-  "description": "Simple PHP Framework",
+  "description": "MidWork - Simple PHP Framework",
   "require": {
     "php": "^7.2",
     "ext-pdo": "*"
