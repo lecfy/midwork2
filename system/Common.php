@@ -116,3 +116,20 @@ function redirect($url = false) {
     header('location: ' . config('host') . $url);
     exit;
 }
+
+function exception($e, ... $errors)
+{
+    echo '<p style="font-weight: bold; color: red;">' . $e->getMessage() . '</p>';
+
+    foreach ($errors as $error) {
+        if ($error == 'post') {
+            echo '<p style="font-weight: bold; color: black;">$_POST: ';
+            print_r($_POST);
+            echo '</p>';
+        } else {
+            echo '<p style="font-weight: bold; color: rgb(230,33,67);">' . $error . '</p>';
+        }
+    }
+
+    $_SESSION['no_redirect'] = true;
+}
