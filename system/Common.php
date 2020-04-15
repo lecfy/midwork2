@@ -79,12 +79,14 @@ function href($link = false, $name = false) {
  *
  * @return mixed
  */
-function view($name, $data = []) {
-    foreach ($data as $key => $value) {
-        $$key = $value;
-    }
+if (!function_exists('view')) {
+    function view($name, $data = []) {
+        foreach ($data as $key => $value) {
+            $$key = $value;
+        }
 
-    return include_once APP_PATH . 'Views/' . $name . '.php';
+        return include_once APP_PATH . 'Views/' . $name . '.php';
+    }
 }
 
 /*
