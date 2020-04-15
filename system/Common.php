@@ -5,6 +5,8 @@
 
 /*
  * returns previous post values or default
+ *
+ * @return string|false
  */
 if (!function_exists('value')) {
     function value($input, $default = false) {
