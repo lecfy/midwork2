@@ -6,15 +6,19 @@
 /*
  * returns previous post values or default
  */
-function value($input, $default = false) {
-    if (!empty($_SESSION['post'][$input])) {
-        $temp = $_SESSION['post'][$input];
-        unset($_SESSION['post'][$input]);
+if (!function_exists('value')) {
+    function value($input, $default = false) {
+        if (!empty($_SESSION['post'][$input])) {
+            $temp = $_SESSION['post'][$input];
+            unset($_SESSION['post'][$input]);
 
-        return $temp;
+            return $temp;
+        } elseif (!empty($default)) {
+            return $default;
+        }
+
+        return false;
     }
-
-    return $default ?? false;
 }
 
 /*
