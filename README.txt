@@ -1,3 +1,5 @@
+MidWork v2.0 Beta
+
 Requirements
 
 PHP 7.2 or higher, MySQL PDO
