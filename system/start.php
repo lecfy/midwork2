@@ -38,19 +38,20 @@ $full_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : 
 $full_url = rtrim($full_url, '/');
 
 // cuts website url and leaves us with controller, method and params
-$route = str_replace(config('host'), '', $full_url);
+$uri = str_replace(config('host'), '', $full_url);
 
-// if it doesn't match allowed characters, returns default route
-if (!preg_match('/^[\/a-z0-9_-]+$/i', $route)) {
-    $route = config('route')['default'];
+// if it doesn't match allowed characters, returns default rout
+if (!preg_match('/^[\/a-z0-9_-]+$/i', $uri)) {
+    /** @var array $route */
+    $uri = $route['default'];
 }
 
 if (in_array($route, array_keys(config('route') ) ) ) {
-    $route = config('route')[$route];
+    $uri = $route[$uri];
 }
 
 // returns array as in: 0 => controller class, 1 => method, 2 and more => params
-$explode = explode('/', $route);
+$explode = explode('/', $uri);
 
 // redirect home if controller is undefined
 if (empty($explode[0])) {

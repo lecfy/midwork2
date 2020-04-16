@@ -14,7 +14,7 @@ $config['db_password'] = '';
  */
 
 // default route = controller/method
-$config['route']['default'] = 'home/index';
+$route['default'] = 'home/index';
 
 // path to app folder with trailing slash
 define('APP_PATH', __DIR__ . '/');
