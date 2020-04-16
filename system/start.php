@@ -80,7 +80,7 @@ if (!preg_match('/^[\/a-z0-9_-]+$/i', $uri)) {
     $uri = $route['default'];
 }
 
-if (in_array($uri, array_keys($route ) ) ) {
+if (in_array($uri, array_keys($route) ) ) {
     $uri = $route[$uri];
 }
 
