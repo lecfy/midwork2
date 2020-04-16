@@ -57,6 +57,19 @@ if (!function_exists('value')) {
 }
 
 /*
+ * compatibility with previous version
+ */
+if (!function_exists('alert')) {
+    function alert($message = false, $type = 'primary') {
+        if ($message) {
+            set_alert($message, $type);
+        } else {
+            show_alert();
+        }
+    }
+}
+
+/*
  * show notification message
  */
 if (!function_exists('show_alert')) {
