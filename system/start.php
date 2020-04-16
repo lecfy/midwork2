@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $env = [];
 if (file_exists(ROOT_PATH . '.env')) {
     $env = parse_ini_file(ROOT_PATH . '.env');
@@ -42,8 +44,6 @@ function lang($key, $replace = false) {
 
     return !empty($lang[$key]) ? $lang[$key] : $key;
 }
-
-session_start();
 
 // includes common/basic functions
 require_once APP_PATH . 'Common.php';
