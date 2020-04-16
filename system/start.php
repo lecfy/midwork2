@@ -64,8 +64,10 @@ spl_autoload_register(function ($class) {
 
     if (file_exists(ROOT_PATH . $class . '.php')) {
         include ROOT_PATH . $class . '.php';
+    } elseif (file_exists(SYSTEM_PATH . '../' . $class . '.php')) {
+        include SYSTEM_PATH . '../' . $class . '.php';
     } else {
-        die("$class does not exist");
+        die($class . " does not exist");
     }
 });
 
