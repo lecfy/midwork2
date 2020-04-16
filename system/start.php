@@ -20,6 +20,29 @@ function config($key) {
     return !empty($config[$key]) ? $config[$key] : false;
 }
 
+/*
+ * Language
+ */
+
+$lang = [];
+if (config('lang')
+    && in_array(config('lang'), config('languages'))
+    && file_exists(APP_PATH . 'Language/' . config('lang') . '.php')
+) {
+    require_once (APP_PATH . 'Language/' . config('lang') . '.php');
+}
+
+function lang($key, $replace = false) {
+    global $lang;
+
+    if ($replace) {
+        $search = is_array($replace) ? array_keys($replace) : '%s';
+        $lang[$key] = str_replace($search, $replace, $lang[$key]);
+    }
+
+    return !empty($lang[$key]) ? $lang[$key] : $key;
+}
+
 session_start();
 
 // includes common/basic functions
