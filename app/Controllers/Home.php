@@ -1,8 +1,8 @@
 <?php namespace App\Controllers;
 
-use System\Controller;
+use System\Midwork;
 
-class Home extends Controller
+class Home extends Midwork
 {
     /*
      * homepage

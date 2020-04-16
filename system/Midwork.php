@@ -2,7 +2,7 @@
 
 use PDOException;
 
-class Controller
+class Midwork
 {
     /*
      * empty constructor
