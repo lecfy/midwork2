@@ -203,3 +203,15 @@ if (!function_exists('exception')) {
         $_SESSION['no_redirect'] = true;
     }
 }
+
+if (!function_exists('hsc')) {
+    function hsc($data) {
+        if (is_array($data)){
+            foreach ($data as $key => $value) {
+                $data[$key] = htmlspecialchars($value);
+            }
+            return $data;
+        }
+        return htmlspecialchars($data);
+    }
+}
