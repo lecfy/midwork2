@@ -22,6 +22,10 @@ function config($key) {
     return !empty($config[$key]) ? $config[$key] : false;
 }
 
+// includes common/basic functions
+require_once APP_PATH . 'Common.php';
+require_once 'Common.php';
+
 /*
  * Language
  */
@@ -44,11 +48,6 @@ function lang($key, $replace = false) {
 
     return !empty($lang[$key]) ? $lang[$key] : $key;
 }
-
-// includes common/basic functions
-require_once APP_PATH . 'Common.php';
-require_once 'Common.php';
-
 
 /*
  * Routing
