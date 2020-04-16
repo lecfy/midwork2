@@ -6,6 +6,37 @@
  */
 
 /*
+ * returns html link
+ */
+if (!function_exists('href')) {
+    function href($url = false, $name = false, $class = false)
+    {
+        $return = $url = config('host') . $url;
+
+        if ($name) {
+            $name = match_lang($name);
+
+            if ($class) {
+                $class = ' class=" ' . $class . '"';
+            }
+
+            $return = '<a href="' . $url . '"' . $class . '>' . $name . '</a>';
+        }
+
+        return $return;
+    }
+}
+
+if (!function_exists('match_lang')) {
+    function match_lang($string) {
+        if (preg_match('/^[a-z]+_.*/', $string)) {
+            return lang($string);
+        }
+        return $string;
+    }
+}
+
+/*
  * returns previous post values or default
  *
  * @return string|false
