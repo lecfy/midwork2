@@ -185,6 +185,20 @@ if (!function_exists('redirect')) {
     }
 }
 
+if (!function_exists('redirect_with_input')) {
+    function redirect_with_input($url = false) {
+        $_SESSION['post'] = $_POST;
+        redirect($url);
+    }
+}
+
+if (!function_exists('refresh')) {
+    function refresh() {
+        header('location: ' . $_SERVER['REQUEST_URI']);
+        exit;
+    }
+}
+
 if (!function_exists('exception')) {
     function exception($e, ...$errors)
     {
@@ -201,6 +215,20 @@ if (!function_exists('exception')) {
         }
 
         $_SESSION['no_redirect'] = true;
+    }
+}
+
+if (!function_exists('random_string')) {
+    function random_string($len = 10) {
+        $string = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $return = false;
+
+        for($i = 1; $i <= $len; $i++)
+        {
+            $mt_rand = mt_rand(0, strlen($string) - 1);
+            $return .= $string[$mt_rand];
+        }
+        return $return;
     }
 }
 
