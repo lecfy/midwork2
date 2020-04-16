@@ -16,6 +16,10 @@ function config($key) {
     global $env;
 
     if ($key == 'languages') {
+        if (!is_readable(APP_PATH . 'Language')) {
+            return [];
+        }
+
         $array = scandir(APP_PATH . 'Language');
         $array = array_slice($array, 2);
         $array = str_replace('.php', '', $array);
