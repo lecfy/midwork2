@@ -5,11 +5,14 @@
  * To override, create a function with the same name in app/Common.php file
  */
 
-use App\Auth;
 
 /*
  * shortcut function for Auth::user
  */
+
+
+use System\Auth;
+
 if (!function_exists('auth')) {
     function auth($column = false) {
         return Auth::user($column);
