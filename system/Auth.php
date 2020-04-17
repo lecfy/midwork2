@@ -16,7 +16,11 @@ class Auth
         }
 
         if (empty(self::$user)) {
-            $table = config('auth_table') ?? 'users';
+            $table = 'users';
+            if (config('auth_table')) {
+                $table = config('auth_table');
+            }
+
             self::$user = Model::select($table, $_SESSION['user_id']);
         }
 
