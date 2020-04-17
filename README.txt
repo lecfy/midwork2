@@ -23,5 +23,5 @@ HOW-TOs
 Uncomment or add the following to your app/Config.php
 $config['db_port'] = 1234;
 
-Optionally add the following to your /.env to have different port for your local development
+Optionally add the following to .env to have different port for local development environment
 db_port = 1234
