@@ -16,7 +16,16 @@ class Db
     {
         if (empty(self::$instance)) {
             try {
-                self::$instance = new PDO('mysql:host=' . config('db_host') . ';dbname=' . config('db_name') . ';port=' . config('db_port'), config('db_user'), config('db_password'));
+                if (config('db_dsn')) {
+                    $dsn = config('db_dsn');
+                } else {
+                    $dsn = 'mysql:';
+                    $dsn .= 'host=' . config('db_host');
+                    $dsn .= ';dbname=' . config('db_name');
+                    if (config('db_port')) $dsn .= ';port=' . config('db_port');
+                }
+
+                self::$instance = new PDO($dsn, config('db_user'), config('db_password'));
                 self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 self::$instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             } catch (PDOException $e) {

@@ -5,10 +5,12 @@ $config['host'] = '';
 
 // database access details
 $config['db_host'] = 'localhost';
-$config['db_port'] = '';
 $config['db_name'] = '';
 $config['db_user'] = '';
 $config['db_password'] = '';
+
+//$config['db_port'] = '3307';
+//$config['db_dsn'] = '';
 
 /*
  * Routes and Paths
