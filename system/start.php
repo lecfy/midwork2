@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+session_start([
+    'cookie_lifetime' => 86400 * 90
+]);
 
 $env = [];
 if (file_exists(ROOT_PATH . '.env')) {
