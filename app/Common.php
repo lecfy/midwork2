@@ -1,28 +1,4 @@
 <?php
-
-use App\Auth;
-
 /*
- * shortcut function for Auth::user
+ * you can add your own functions here and/or override system common functions
  */
-function auth($column = false) {
-    return Auth::user($column);
-}
-
-/*
- * redirects if not authenticated
- */
-function auth_only() {
-    if (!Auth::user()) {
-        redirect('login');
-    }
-}
-
-/*
- * redirects to account if authenticated, stays if guest
- */
-function guest_only() {
-    if (Auth::user()) {
-        redirect('account');
-    }
-}

@@ -5,6 +5,39 @@
  * To override, create a function with the same name in app/Common.php file
  */
 
+use App\Auth;
+
+/*
+ * shortcut function for Auth::user
+ */
+if (!function_exists('auth')) {
+    function auth($column = false) {
+        return Auth::user($column);
+    }
+}
+
+/*
+ * redirects if not authenticated
+ */
+if (!function_exists('auth_only')) {
+    function auth_only() {
+        if (!Auth::user()) {
+            redirect('login');
+        }
+    }
+}
+
+/*
+ * redirects to account if authenticated, stays if guest
+ */
+if (!function_exists('guest_only')) {
+    function guest_only() {
+        if (Auth::user()) {
+            redirect('account');
+        }
+    }
+}
+
 /*
  * returns html link
  */
