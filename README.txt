@@ -15,3 +15,13 @@ or
 2. Move the contents of "public" folder to your public/web directory, for e.g. public_html and change path to your app/Config.php in public/index.php
 3. Configure HOST (website url) in app/Config.php
 4. Go to your website
+
+HOW-TOs
+
+1. How to specify custom port for my database connection?
+
+Uncomment or add the following to your app/Config.php
+$config['db_port'] = 1234;
+
+Optionally add the following to your /.env to have different port for your local development
+db_port = 1234
