@@ -11,7 +11,7 @@ class Auth
      *
      * @return array|string|mixed
      */
-    public static function user($column = false)
+    public static function user(string $column = '')
     {
         if (empty($_SESSION['user_id'])) {
             return false;
@@ -27,7 +27,7 @@ class Auth
     /*
      * creates auth session
      */
-    public static function create($user_id)
+    public static function create(int $user_id)
     {
         $_SESSION['user_id'] = $user_id;
     }
