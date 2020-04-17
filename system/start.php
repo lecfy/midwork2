@@ -64,6 +64,17 @@ function lang($key, $replace = false) {
 }
 
 /*
+ * htmlspecialchars + remove spaces ltrim and rtrim
+ */
+if($_POST){
+    foreach($_POST as $item=>$value){
+        $_POST[$item] = hsc($_POST[$item]);
+        $_POST[$item] = preg_replace(['/^\s+$/', '/^\s+/', '/\s+$/'], '', $_POST[$item]);
+        //$_POST[$item] = preg_replace('/(\S+)(\s{2,})(\S+)/', '$1 $3', $_POST[$item]); @todo
+    }
+}
+
+/*
  * Routing
  */
 
