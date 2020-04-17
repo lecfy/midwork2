@@ -49,7 +49,9 @@ class Model
 
     public static function select($table, $id)
     {
-        return self::select_where($table, 'id', $id);
+        return self::select_where($table, [
+            'id' => $id
+        ]);
     }
 
     public static function select_all($table)
@@ -63,14 +65,13 @@ class Model
         }
     }
 
-    public static function select_where($table, $where)
+    public static function select_where(string $table, array $where)
     {
         $column = array_keys($where)[0];
-        $value = $where[0];
 
         try {
             $prepare = Db::conn()->prepare("SELECT * FROM $table WHERE $column = ?");
-            $prepare->execute([$value]);
+            $prepare->execute(array_values($where));
             return $prepare->fetch();
         } catch (PDOException $e) {
             die($e->getMessage());
