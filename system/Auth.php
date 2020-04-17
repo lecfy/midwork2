@@ -16,7 +16,8 @@ class Auth
         }
 
         if (empty(self::$user)) {
-            self::$user = Model::select('users', $_SESSION['user_id']);
+            $table = config('auth_table') ?? 'users';
+            self::$user = Model::select($table, $_SESSION['user_id']);
         }
 
         return $column ? self::$user[$column] : self::$user;
