@@ -12,16 +12,15 @@ class Model
         ]);
     }
 
-    public static function delete_where($table, $where)
+    public static function delete_where(string $table, array $where)
     {
         $column = array_keys($where)[0];
-        $value = $where[0];
 
         try {
             $sql = "DELETE FROM $table WHERE $column = ?";
 
             $prepare = Db::conn()->prepare($sql);
-            $prepare->execute([$value]);
+            $prepare->execute(array_values($where));
         } catch (PDOException $e) {
             die($e->getMessage());
         }
