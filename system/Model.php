@@ -5,7 +5,7 @@ use PDOException;
 
 class Model
 {
-    public static function delete($table, $id)
+    public static function delete(string $table, int $id)
     {
         return self::delete_where($table, [
             'id' => $id
@@ -26,7 +26,7 @@ class Model
         }
     }
 
-    public static function insert($table, $data)
+    public static function insert(string $table, array $data)
     {
         try {
             $columns = implode(',', array_keys($data));
@@ -46,14 +46,14 @@ class Model
         }
     }
 
-    public static function select($table, $id)
+    public static function select(string $table, int $id)
     {
         return self::select_where($table, [
             'id' => $id
         ]);
     }
 
-    public static function select_all($table)
+    public static function select_all(string $table)
     {
         try {
             $prepare = Db::conn()->prepare("SELECT * FROM $table");
