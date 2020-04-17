@@ -5,6 +5,7 @@ $config['host'] = '';
 
 // database access details
 $config['db_host'] = 'localhost';
+$config['db_port'] = '';
 $config['db_name'] = '';
 $config['db_user'] = '';
 $config['db_password'] = '';
