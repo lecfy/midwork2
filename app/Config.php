@@ -11,6 +11,7 @@ $config['db_password'] = '';
 
 //$config['db_port'] = '3307';
 //$config['db_dsn'] = '';
+//$config['auth_table = '';
 
 /*
  * Routes and Paths
