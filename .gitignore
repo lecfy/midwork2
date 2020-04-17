@@ -3,3 +3,4 @@
 .env
 composer.lock
 /app/Controllers/Test.php
+/app/Views/test.php

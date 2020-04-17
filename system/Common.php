@@ -173,12 +173,25 @@ if (!function_exists('href')) {
  * @return mixed
  */
 if (!function_exists('view')) {
-    function view($name, $data = []) {
+    function view(string $name, array $data = []) {
         foreach ($data as $key => $value) {
             $$key = $value;
         }
 
         return include_once APP_PATH . 'Views/' . $name . '.php';
+    }
+}
+
+/*
+ * does what view() does, except also tries to include Views/header.php and Views/footer.php
+ */
+if (!function_exists('view3')) {
+    function view3(string $name, array $data) {
+        $return = view('header', $data);
+        $return .= view($name, $data);
+        $return .= view('footer', $data);
+
+        return $return;
     }
 }
 
