@@ -1,6 +1,4 @@
-<?php namespace App;
-
-use System\Model;
+<?php namespace System;
 
 class Auth
 {
