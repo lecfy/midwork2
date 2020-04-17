@@ -106,10 +106,10 @@ spl_autoload_register(function ($class) {
 });
 
 // create object and unset explode[0]
-$app_path = rtrim(APP_PATH, '/');
-$app = substr($app_path, strrpos($app_path, '/' )+1);
+//$app_path = rtrim(APP_PATH, '/'); // @todo
+//$app = substr($app_path, strrpos($app_path, '/' )+1); // @todo
 
-$class_name = "\\$app\\Controllers\\" . ucfirst($explode[0]);
+$class_name = "\\App\\Controllers\\" . ucfirst($explode[0]);
 $object = new $class_name;
 unset($explode[0]);
 

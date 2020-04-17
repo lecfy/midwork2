@@ -8,7 +8,7 @@ Installation
 
 1.
 Use composer to install:
- require midmyk/midwork2:dev-master"
+ require midmyk/midwork2:dev-master
 or
  manually download zip archive and unpack it into private directory (not accessible from the web)
 
