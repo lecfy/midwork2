@@ -1,6 +1,5 @@
 <?php namespace System;
 
-use System\Db;
 use PDOException;
 
 class Model
@@ -46,6 +45,9 @@ class Model
         }
     }
 
+    /*
+     * returns one row
+     */
     public static function select(string $table, int $id)
     {
         return self::select_where($table, [
@@ -53,17 +55,9 @@ class Model
         ]);
     }
 
-    public static function select_all(string $table)
-    {
-        try {
-            $prepare = Db::conn()->prepare("SELECT * FROM $table");
-            $prepare->execute();
-            return $prepare->fetchAll();
-        } catch (PDOException $e) {
-            die($e->getMessage());
-        }
-    }
-
+    /*
+     * returns one row
+     */
     public static function select_where(string $table, array $where)
     {
         $column = array_keys($where)[0];
@@ -72,6 +66,20 @@ class Model
             $prepare = Db::conn()->prepare("SELECT * FROM $table WHERE $column = ?");
             $prepare->execute(array_values($where));
             return $prepare->fetch();
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+
+    /*
+     * returns all rows
+     */
+    public static function select_all(string $table)
+    {
+        try {
+            $prepare = Db::conn()->prepare("SELECT * FROM $table");
+            $prepare->execute();
+            return $prepare->fetchAll();
         } catch (PDOException $e) {
             die($e->getMessage());
         }
