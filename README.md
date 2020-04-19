@@ -14,7 +14,7 @@ or download zip archive and unpack it into private directory (not accessible fro
 
 To get latest updates, just run `composer update`
 
-### HOW-TOs
+### HOW-TOs: Model
 
 **How to specify custom port for my database connection?**
 
@@ -71,3 +71,20 @@ $query = Db::conn()->query("SELECT * FROM USERS");
 $users = $query->fetchAll()
 
 print_r($users);
+
+### HOW-Tos: Common
+
+You can find helper functions inside System or vendor/midmyk/midwork2/System. 
+They are used to automate some things like showing an error message in your form or setting authentication session etc.
+You use them as normal php functions inside your controllers or views.
+
+**Adding your own function**
+
+Just create a function inside app/Common.php and it will be automatically included and available in your controllers and views. 
+
+**Overriding**
+
+Sometimes you may not be satisfied with what one of these functions does, 
+yet you don't wnat to create another function - you want to override already existing one.
+To do that, just create a function with the same name in app/Common.php
+
