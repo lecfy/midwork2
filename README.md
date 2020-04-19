@@ -1,4 +1,4 @@
-#### MidWork v2.0 Beta
+### MidWork v2.0 Beta
 
 **Requirements**: PHP 7.2 or higher, MySQL PDO
 
@@ -14,7 +14,7 @@ or download zip archive and unpack it into private directory (not accessible fro
 
 To get latest updates, just run `composer update`
 
-#### HOW-TOs
+### HOW-TOs
 
 **How to specify custom port for my database connection?**
 
