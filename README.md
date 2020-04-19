@@ -12,7 +12,7 @@ or download zip archive and unpack it into private directory (not accessible fro
 
 **Update**
 
-To get latest updates, just run `composer update`
+To get the latest updates, just run `composer update`
 
 ### HOW-TOs: Model
 
