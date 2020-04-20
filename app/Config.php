@@ -22,17 +22,16 @@ $route['default'] = 'home/index';
 /*
  * Careful!
  * Don't change the following details unless you know what you're doing!
+ *
+ * Must always have a trailing slash
  */
 
-// path to app folder with trailing slash
+define('ROOT_PATH', __DIR__ . '/../');
 define('APP_PATH', __DIR__ . '/');
+define('STORAGE_PATH', __DIR__ . '/../storage/');
 
-// path to system folder with trailing slash
 if (file_exists(__DIR__ . '/../system')) {
     define('SYSTEM_PATH', __DIR__ . '/../system/');
 } elseif(file_exists(__DIR__ . '/../vendor/midmyk/midwork2/system')) {
     define('SYSTEM_PATH', __DIR__ . '/../vendor/midmyk/midwork2/system/');
 }
-
-// path to root directory with trailing slash
-define('ROOT_PATH', __DIR__ . '/../');
