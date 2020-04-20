@@ -14,17 +14,25 @@ $config['db_password'] = '';
 //$config['auth_table = '';
 
 /*
- * Routes and Paths
+ * Routes
  */
-
 // default route = controller/method
 $route['default'] = 'home/index';
+
+/*
+ * Careful!
+ * Don't change the following details unless you know what you're doing!
+ */
 
 // path to app folder with trailing slash
 define('APP_PATH', __DIR__ . '/');
 
 // path to system folder with trailing slash
-define('SYSTEM_PATH', __DIR__ . '/../system/');
+if (file_exists(__DIR__ . '/../system')) {
+    define('SYSTEM_PATH', __DIR__ . '/../system/');
+} elseif(file_exists(__DIR__ . '/../vendor/midmyk/midwork2/system')) {
+    define('SYSTEM_PATH', __DIR__ . '/../vendor/midmyk/midwork2/system/');
+}
 
-// path to root directory
+// path to root directory with trailing slash
 define('ROOT_PATH', __DIR__ . '/../');
