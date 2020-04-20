@@ -1,6 +1,7 @@
 <?php
 
-// full website url (where you've uploaded "public" folder) WITH a trailing slash
+// full website url WITH a trailing slash, e.g. https://midreg.com/
+// this mirrors your "public" folder location
 $config['host'] = '';
 
 // database access details
