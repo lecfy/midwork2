@@ -78,14 +78,16 @@ if($_POST){
  * Routing
  */
 
-// gets full url, e.g. https://website.com/controller/method/param/
+/*// gets full url, e.g. https://website.com/controller/method/param/
 $full_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 // removes trailing slash
 $full_url = rtrim($full_url, '/');
 
 // cuts website url and leaves us with controller, method and params
-$uri = str_replace(config('host'), '', $full_url);
+$uri = str_replace(config('host'), '', $full_url);*/
+
+$uri = !empty($_GET['uri']) ? $_GET['uri'] : false;
 
 // if it doesn't match allowed characters, returns default rout
 if (!preg_match('/^[\/a-z0-9_-]+$/i', $uri)) {
@@ -93,6 +95,7 @@ if (!preg_match('/^[\/a-z0-9_-]+$/i', $uri)) {
     $uri = $route['default'];
 }
 
+// custom routes
 if (in_array($uri, array_keys($route) ) ) {
     $uri = $route[$uri];
 }
