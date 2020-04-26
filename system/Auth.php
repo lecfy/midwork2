@@ -32,6 +32,7 @@ class Auth
      */
     public static function create(int $user_id)
     {
+        session_regenerate_id();
         $_SESSION['user_id'] = $user_id;
     }
 
