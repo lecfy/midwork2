@@ -31,9 +31,9 @@ define('ROOT_PATH', __DIR__ . '/../');
 define('APP_PATH', __DIR__ . '/');
 define('STORAGE_PATH', __DIR__ . '/../storage/');
 
-/* @todo deprecated
- * if (file_exists(__DIR__ . '/../system')) {
+// @todo deprecated
+if (file_exists(__DIR__ . '/../system')) {
     define('SYSTEM_PATH', __DIR__ . '/../system/');
 } elseif(file_exists(__DIR__ . '/../vendor/midmyk/midwork2/system')) {
     define('SYSTEM_PATH', __DIR__ . '/../vendor/midmyk/midwork2/system/');
-}*/
+}
