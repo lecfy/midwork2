@@ -108,6 +108,10 @@ if (empty($explode[0])) {
     redirect();
 }
 
+if(file_exists(ROOT_PATH . 'vendor/autoload.php')) {
+    require_once ROOT_PATH . '/vendor/autoload.php';
+}
+
 spl_autoload_register(function ($class) {
     $class = lcfirst($class);
     $class = str_replace('\\', '/', $class);
