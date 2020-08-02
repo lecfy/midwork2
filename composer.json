@@ -9,7 +9,7 @@
 
   },
 
-  "autoload-dev": {
+  "autoload": {
     "psr-4": {
       "System\\": "system/"
     }
