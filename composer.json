@@ -11,7 +11,8 @@
 
   "autoload": {
     "psr-4": {
-      "System\\": "system/"
+      "System\\": "system/",
+      "App\\Controllers\\": "app/Controllers/"
     }
   }
 }
