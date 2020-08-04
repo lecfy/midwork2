@@ -112,6 +112,7 @@ if(file_exists(ROOT_PATH . 'vendor/autoload.php')) {
     require_once ROOT_PATH . '/vendor/autoload.php';
 }
 
+// @todo deprecated
 spl_autoload_register(function ($class) {
     $class = lcfirst($class);
     $class = str_replace('\\', '/', $class);
@@ -119,13 +120,17 @@ spl_autoload_register(function ($class) {
     if (file_exists(ROOT_PATH . $class . '.php')) {
         include ROOT_PATH . $class . '.php';
     } else {
-        die($class . " does not exist");
+        //die($class . " does not exist");
     }
 });
 
 // create object and unset explode[0]
-$class_name = "\\App\\Controllers\\" . ucfirst($explode[0]);
-$object = new $class_name;
+$class_ucf = ucfirst($explode[0]);
+$class = "\\App\\Controllers\\" . $class_ucf;
+if (!class_exists($class)) {
+    die("Class <strong>$class_ucf</strong> does NOT exist");
+}
+$object = new $class;
 unset($explode[0]);
 
 // check if method name is set (explode[1])
@@ -133,7 +138,7 @@ unset($explode[0]);
 // redirect home if method doesn't exist
 $method = !empty($explode[1]) ? $explode[1] : 'index';
 if (!method_exists($object, $method)) {
-    die('Method ' . $class_name . '/' . $method . ' does not exist');
+    die('Method ' . $class_ucf . '/<strong>' . $method . '</strong> does not exist');
 }
 unset($explode[1]);
 
